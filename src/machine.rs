@@ -3,7 +3,7 @@
 // Filename: machine.rs
 // Author: Louise <louise>
 // Created: Mon Feb  5 12:07:43 2018 (+0100)
-// Last-Updated: Tue Feb 13 11:16:49 2018 (+0100)
+// Last-Updated: Tue Feb 13 11:23:42 2018 (+0100)
 //           By: Louise <louise>
 //
 use std::fs::File;
@@ -27,13 +27,13 @@ enum Symbol {
 }
 
 #[derive(Clone, Debug, Default)]
-#[cfg(target_arch = "x86_64")]
+#[cfg(all(target_arch = "x86_64", target_family = "unix"))]
 pub struct Machine {
     program: Vec<Symbol>
 }
 
 #[derive(Clone, Debug, Default)]
-#[cfg(not(target_arch = "x86_64"))]
+#[cfg(not(all(target_arch = "x86_64", target_family = "unix")))]
 pub struct Machine {
     program: Vec<Symbol>,
     input: input::Input,
@@ -42,7 +42,7 @@ pub struct Machine {
     tape_idx: usize
 }
 
-#[cfg(not(target_arch = "x86_64"))]
+#[cfg(not(all(target_arch = "x86_64", target_family = "unix")))]
 impl Machine {
     pub fn new_with_file(file: &mut File) -> Machine {
         let mut program_s = String::new();
@@ -86,7 +86,7 @@ impl Machine {
 }
 
 
-#[cfg(target_arch = "x86_64")]
+#[cfg(all(target_arch = "x86_64", target_family = "unix"))]
 impl Machine {
     pub fn new_with_file(file: &mut File) -> Machine {
         let mut program_s = String::new();
@@ -292,7 +292,7 @@ impl Symbol {
     }
 }
 
-#[cfg(not(target_arch = "x86_64"))]
+#[cfg(not(all(target_arch = "x86_64", target_family = "unix")))]
 mod input {
     use std::collections::VecDeque;
     

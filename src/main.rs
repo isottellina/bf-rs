@@ -3,7 +3,7 @@
 // Filename: main.rs
 // Author: Louise <louise>
 // Created: Mon Feb  5 11:53:25 2018 (+0100)
-// Last-Updated: Tue Feb 13 11:16:38 2018 (+0100)
+// Last-Updated: Tue Feb 13 11:20:59 2018 (+0100)
 //           By: Louise <louise>
 //
 #![feature(slice_patterns)]
@@ -13,7 +13,6 @@ extern crate simplelog;
 extern crate libc;
 
 mod machine;
-#[cfg(target_arch = "x86_64")]
 mod jit;
 
 use std::env;
