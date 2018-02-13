@@ -1,0 +1,9 @@
+[package]
+name = "bf-rs"
+version = "0.1.0"
+authors = ["Louise <louise@zanier.org>"]
+
+[dependencies]
+libc = "0.2.36"
+log = "~0.4.0"
+simplelog = "0.4.4"
